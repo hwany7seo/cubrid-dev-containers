@@ -1,6 +1,23 @@
 ARG VERSION_BASE
 
-FROM 192.168.2.253:5000/development/baseimage-dev1:$VERSION_BASE
+FROM jrei/systemd-ubuntu
+
+RUN apt-get update
+
+RUN apt-get install -y sudo \
+											 apt-utils \
+                       net-tools \
+                       sudo \
+                       openssh-server \
+                       vim
+
+RUN apt-get install -y perl \
+                       nano \
+											 openjdk-8-jdk \
+											 ant \
+											 samba
+                      
+COPY smb.conf /etc/samba/smb.conf
 
 # Reference:
 # ISO 8601, RFC 3339
@@ -51,22 +68,17 @@ RUN    sed "/# End of file/d" -i /etc/security/limits.conf \
 \n*               hard    nofile          32768 \
 \n*               hard    nproc           16384 \
 \n \
-\n# End of file' >> /etc/security/limits.conf \
-    && sed -i "s/^\([*|root].*\)/# \1/" /etc/security/limits.d/20-nproc.conf
+\n# End of file' >> /etc/security/limits.conf
+#\n# End of file' >> /etc/security/limits.conf \
+#    && sed -i "s/^\([*|root].*\)/# \1/" /etc/security/limits.d/20-nproc.conf
 
-RUN    sed -i "s/^\(%wheel[[:space:]]ALL=(ALL)[[:space:]]ALL\)/# \1/" /etc/sudoers \
-    && sed -i "s/^# \(%wheel[[:space:]]ALL=(ALL)[[:space:]]NOPASSWD: ALL\)/\1/" /etc/sudoers
+#RUN    sed -i "s/^\(%admin[[:space:]]ALL=(ALL)[[:space:]]ALL\)/# \1/" /etc/sudoers \
+#    && sed -i "s/^# \(%admin[[:space:]]ALL=(ALL)[[:space:]]NOPASSWD: ALL\)/\1/" /etc/sudoers
+
+RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 
 COPY create_user_cubrid.sh /root/create_user_cubrid.sh
 
 RUN chmod +x /root/create_user_cubrid.sh
-
-COPY .custom_profile /root/.custom_profile
-COPY .custom_profile /etc/skel/.custom_profile
-
-RUN    echo $'\nsource ~/.custom_profile' >> /root/.bash_profile \
-    && echo $'\nsource ~/.custom_profile' >> /root/.bashrc \
-    && echo $'\nsource ~/.custom_profile' >> /etc/skel/.bash_profile \
-    && echo $'\nsource ~/.custom_profile' >> /etc/skel/.bashrc
 
 ENTRYPOINT ["/usr/sbin/init"]

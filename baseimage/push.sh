@@ -3,7 +3,7 @@
 CANONICAL_PATH=`readlink -f $(dirname ${BASH_SOURCE})`
 
 DOCKER_HUB_PROJECT="192.168.2.253:5000/development"
-IMAGE_NAME="baseimage"
+IMAGE_NAME="baseimage-dev1"
 IMAGE_TAG=`cd ${CANONICAL_PATH} && cat version`
 
 IMAGE_TAG_PATCH=${IMAGE_TAG}           # X.Y.Z

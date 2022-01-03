@@ -99,9 +99,10 @@ RUN yum install -y man \
 # Group-Id: development
 # RUN yum groupinstall -y "Development Tools" --setopt=group_package_types=mandatory,default,optional
 # # Mandatory Packages:
+
 RUN yum install -y \
-                   autoconf \
-                   automake \
+									 autoconf \
+									 automake \
                    binutils \
                    bison \
                    flex \
@@ -369,11 +370,7 @@ RUN yum install -y cgdb \
                    cmake3 \
                    glances \
                    htop \
-                   jq
-#                   maven \
-#                   samba \
-#                   telnet \
-#                   zsh
+                   jq 
 
 RUN yum install -y dh-autoreconf \
                    curl-devel \
@@ -440,10 +437,9 @@ RUN /usr/bin/pip3 install sphinx==1.7.9 && /usr/bin/pip3 install sphinx_rtd_them
 
 # Maven
 RUN mkdir -p /usr/local/src/apache-maven-3.6 \
-  && curl -L https://archive.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz -o /usr/local/src/apache-maven-3.6.3-bin.tar.gz \
-  && tar  -zxvf /usr/local/src/apache-maven-3.6.3-bin.tar.gz -C  /usr/local/src/apache-maven-3.6 --strip-components=1 \
+	&& curl -L https://archive.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz -o /usr/local/src/apache-maven-3.6.3-bin.tar.gz \
+	&& tar  -zxvf /usr/local/src/apache-maven-3.6.3-bin.tar.gz -C  /usr/local/src/apache-maven-3.6 --strip-components=1 \
   && ln -s /usr/local/src/apache-maven-3.6 /usr/local/apache-maven
-
 
 #USE RVM
 RUN curl -sSL https://rvm.io/mpapis.asc | gpg2 --import - \
@@ -455,7 +451,7 @@ RUN curl -sSL https://rvm.io/mpapis.asc | gpg2 --import - \
        && /usr/local/rvm/bin/rvm alias create default 2.6.5 \
        && /usr/local/rvm/bin/rvm use 2.6.5 \
        ;
-
+						
 #For Cubrid Engine 10.0 Build
 RUN yum install -y libgcrypt-devel
 
@@ -465,7 +461,7 @@ RUN yum install -y libgcrypt-devel
 #        && cd /usr/local/src/m4-1.4.1 \
 #        && ./configure \
 #        && make && make install \
-#       ;
+#				;
 
 #RUN mkdir -p /usr/local/src/autoconf-2.69 \
 #        && curl -L http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz -o /usr/local/src/autoconf-2.69.tar.gz \
@@ -473,7 +469,7 @@ RUN yum install -y libgcrypt-devel
 #        && cd /usr/local/src/autoconf-2.69 \
 #        && ./configure \
 #        && make && make install \
-#       ;
+#				;
 
 RUN mkdir -p /usr/local/src/automake-1.9 \
         && curl -L https://ftp.gnu.org/gnu/automake/automake-1.9.tar.gz -o /usr/local/src/automake-1.9.tar.gz \
@@ -481,7 +477,7 @@ RUN mkdir -p /usr/local/src/automake-1.9 \
         && cd /usr/local/src/automake-1.9 \
         && ./configure --prefix=/usr/local/automake-1.9 \
         && make && make install \
-        && ln -sf /usr/local/automake-1.9/bin/automake-1.9 /usr/bin/automake-1.9 \
+				&& ln -sf /usr/local/automake-1.9/bin/automake-1.9 /usr/bin/automake-1.9 \
         && ln -sf /usr/local/automake-1.9/bin/aclocal-1.9 /usr/bin/aclocal-1.9 \
         ;
 
@@ -493,7 +489,15 @@ RUN mkdir -p /usr/local/src/automake-1.11 \
         && make && make install \
         && ln -sf /usr/local/automake-1.11/bin/automake-1.11 /usr/bin/automake-1.11 \
         && ln -sf /usr/local/automake-1.11/bin/aclocal-1.11 /usr/bin/aclocal-1.11 \
-        ;
+				;
+
+#RUN ln -sf /usr/bin/automake /usr/bin/automake-1.11 \
+#		&& ln -sf /usr/bin/aclocal /usr/bin/aclocal-1.11 \
+#    && ln -sf /usr/bin/automake /usr/bin/automake-1.9 \
+#		&& ln -sf /usr/bin/aclocal /usr/bin/aclocal-1.9 \
+#    ;
+
+#RUN /usr/bin/autoreconf --install
 
 ### End For Dev1-team
 

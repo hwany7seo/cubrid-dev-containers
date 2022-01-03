@@ -9,10 +9,10 @@ CREATED=`date -d @$(stat --printf='%Z' ${CANONICAL_PATH}/Dockerfile) -u +'%Y-%m-
 REVISION=`cd ${CANONICAL_PATH} && git log -1 --format=%h`
 REF_NAME=`cd ${CANONICAL_PATH} && git symbolic-ref -q --short HEAD`
 
-IMAGE_NAME="cubrid-dev1"
+IMAGE_NAME="cubrid-dev1-ubuntu"
 IMAGE_TAG=${VERSION}
 
-docker pull 192.168.2.253:5000/development/baseimage-dev1:${VERSION_BASE}
+docker pull jrei/systemd-ubuntu
 
 docker buildx build \
         --build-arg VERSION_BASE=${VERSION_BASE} \

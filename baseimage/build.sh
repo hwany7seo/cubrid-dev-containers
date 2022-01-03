@@ -8,7 +8,7 @@ CREATED=`date -d @$(stat --printf='%Z' ${CANONICAL_PATH}/Dockerfile) -u +'%Y-%m-
 REVISION=`cd ${CANONICAL_PATH} && git log -1 --format=%h`
 REF_NAME=`cd ${CANONICAL_PATH} && git symbolic-ref -q --short HEAD`
 
-IMAGE_NAME="baseimage"
+IMAGE_NAME="baseimage-dev1"
 IMAGE_TAG=${VERSION}
 
 # IS_NO_CACHE="Y"
