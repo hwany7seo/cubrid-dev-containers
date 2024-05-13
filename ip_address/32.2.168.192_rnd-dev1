@@ -13,19 +13,19 @@
 192.168.2.44	gbjung-44 (rnd-dev1)
 192.168.2.45	gbjung-45 (rnd-dev1)
 192.168.2.46	ubuntu-46 (rnd-dev1)
-192.168.2.47	tigergraph-47 (rnd-dev1)
+192.168.2.47	centos8_47 (rnd-dev1)
 192.168.2.48	neo4j-48 (rnd-dev1)
-192.168.2.49
+192.168.2.49	turbograph-49 (rnd-dev1)
 192.168.2.50	eclipse_50 (rnd-dev1)
 192.168.2.51	oracle_11g_51 (rnd-dev1)
-192.168.2.52	cubrid_ha_52 (rnd-dev1)
-192.168.2.53	eido5-53 (rnd-dev1)
-192.168.2.54
+192.168.2.52
+192.168.2.53
+192.168.2.54	turbograph-54 (rnd-dev1)
 192.168.2.55
 192.168.2.56	dmkim-56 (rnd-dev1)
 192.168.2.57	dmkim-57 (rnd-dev1)
-192.168.2.58
-192.168.2.59
+192.168.2.58	cambo-58 (rnd-dev1)
+192.168.2.59	cambo-59 (rnd-dev1)
 192.168.2.60
 192.168.2.61
 192.168.2.62

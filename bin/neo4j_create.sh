@@ -19,8 +19,9 @@ docker run --detach \
   --network dev-net \
   --ip=192.168.2.${IP_D_CLASS} \
   --env=NEO4J_ACCEPT_LICENSE_AGREEMENT=yes \
-  --volume=$HOME/neo4j/data:/data \
-  --volume=$HOME/neo4j/logs:/logs \
+  --volume=$HOME/neo4j-${IP_D_CLASS}/data:/data \
+  --volume=$HOME/neo4j-${IP_D_CLASS}/logs:/logs \
+  --volume=$HOME/neo4j-${IP_D_CLASS}/plugins:/plugins \
   --cap-add=ALL \
   --privileged \
   --restart always \

@@ -17,3 +17,5 @@ if [ `docker ps --format "{{.Names}}" | grep ${CONTAINER_NAME} | wc -l` != 0 ]; 
 elif [ `docker ps -a --format "{{.Names}}" | grep ${CONTAINER_NAME} | wc -l` != 0 ]; then
 	docker rm ${CONTAINER_NAME}
 fi
+
+${CANONICAL_PATH}/ip_address_update.sh

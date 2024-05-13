@@ -25,3 +25,4 @@ for CONTAINER_VOLUME in ${CONTAINER_VOLUME_LIST[@]}; do
 	docker volume rm ${CONTAINER_VOLUME}
 done
 
+${CANONICAL_PATH}/ip_address_update.sh
